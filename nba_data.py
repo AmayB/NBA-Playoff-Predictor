@@ -31,37 +31,49 @@ def get_team_stats(team_name):
 
 
 # Predict which team is stronger
-def predict_winner(team1_name, team2_name):
-    team1 = get_team_stats(team1_name)
-    team2 = get_team_stats(team2_name)
+def predict_winner(team1, team2):
+    stats1 = get_team_stats(team1)
+    stats2 = get_team_stats(team2)
 
-    if team1 is None or team2 is None:
+    if stats1 is None or stats2 is None:
         return None
 
-    team1_score = (
-        (team1["W_PCT"] * 100 * 0.60)
-        + (team1["PLUS_MINUS"] * 0.40)
-    )
+    score1 = 0
+    score2 = 0
 
-    team2_score = (
-        (team2["W_PCT"] * 100 * 0.60)
-        + (team2["PLUS_MINUS"] * 0.40)
-    )
-
-    total_score = team1_score + team2_score
-
-    team1_probability = team1_score / total_score
-    team2_probability = team2_score / total_score
-
-    if team1_score > team2_score:
-        winner = team1["TEAM_NAME"]
+    # Win percentage
+    if stats1["W_PCT"] > stats2["W_PCT"]:
+        score1 += 3
     else:
-        winner = team2["TEAM_NAME"]
+        score2 += 3
+
+    # Points per game
+    if stats1["PTS"] > stats2["PTS"]:
+        score1 += 2
+    else:
+        score2 += 2
+
+    # Rebounds
+    if stats1["REB"] > stats2["REB"]:
+        score1 += 1
+    else:
+        score2 += 1
+
+    # Assists
+    if stats1["AST"] > stats2["AST"]:
+        score1 += 1
+    else:
+        score2 += 1
+
+    if score1 > score2:
+        winner = team1
+    else:
+        winner = team2
 
     return {
         "winner": winner,
-        "team1_probability": team1_probability,
-        "team2_probability": team2_probability
+        "team1_score": score1,
+        "team2_score": score2
     }
 
 
