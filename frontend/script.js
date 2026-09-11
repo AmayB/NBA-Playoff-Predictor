@@ -117,6 +117,28 @@ function advanceToNBAFinals() {
     document.getElementById("east-finals-team").textContent = eastWinner;
 }
 
+async function predictNBAFinals() {
+    const westTeam = document.getElementById("west-finals-team").textContent;
+    const eastTeam = document.getElementById("east-finals-team").textContent;
+
+    if (
+        westTeam === "Waiting for West" ||
+        eastTeam === "Waiting for East"
+    ) {
+        document.getElementById("nba-champion").textContent = "Waiting...";
+        return;
+    }
+
+    const prediction = await getPrediction(westTeam, eastTeam);
+
+    if (prediction.error) {
+        document.getElementById("nba-champion").textContent = "Error";
+        return;
+    }
+
+    document.getElementById("nba-champion").textContent = prediction.winner;
+}
+
 async function predictAutomaticRound(teams, winners) {
     for (let i = 0; i < teams.length; i += 2) {
 
@@ -180,6 +202,8 @@ async function predictPlayoffs() {
 
     // Conference Champions → NBA Finals
     advanceToNBAFinals();
+
+    await predictNBAFinals();
 }
 
 
