@@ -12,11 +12,17 @@ data = stats.get_data_frames()[0]
 
 # Find a team's statistics
 def get_team_stats(team_name):
-    team_row = data[data["TEAM_NAME"] == team_name]
+    name_fixes = {
+        "Los Angeles Clippers": "LA Clippers",
+        "Los Angeles Lakers": "Los Angeles Lakers",
+        "New York Knicks": "New York Knicks",
+        "Golden State Warriors": "Golden State Warriors",
+        "Oklahoma City Thunder": "Oklahoma City Thunder",
+    }
 
-    if team_row.empty:
-        if team_name == "Los Angeles Clippers":
-            team_row = data[data["TEAM_NAME"] == "LA Clippers"]
+    api_name = name_fixes.get(team_name, team_name)
+
+    team_row = data[data["TEAM_NAME"] == api_name]
 
     if team_row.empty:
         return None
