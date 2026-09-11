@@ -35,6 +35,15 @@ function fillDropdowns(dropdowns, teams) {
 }
 
 
+async function getPrediction(team1, team2) {
+    const response = await fetch(
+        `/predict?team1=${encodeURIComponent(team1)}&team2=${encodeURIComponent(team2)}`
+    );
+
+    return await response.json();
+}
+
+
 async function predictRound(dropdownClass, winnerClass) {
     const dropdowns = document.querySelectorAll(dropdownClass);
     const winners = document.querySelectorAll(winnerClass);
@@ -49,11 +58,7 @@ async function predictRound(dropdownClass, winnerClass) {
             continue;
         }
 
-        const response = await fetch(
-            `/predict?team1=${encodeURIComponent(team1)}&team2=${encodeURIComponent(team2)}`
-        );
-
-        const prediction = await response.json();
+        const prediction = await getPrediction(team1, team2);
 
         if (prediction.error) {
             winners[i / 2].textContent = "Error";
@@ -63,6 +68,7 @@ async function predictRound(dropdownClass, winnerClass) {
         winners[i / 2].textContent = prediction.winner;
     }
 }
+
 
 function advanceWinners(winnerClass, nextRoundClass) {
     const winners = document.querySelectorAll(winnerClass);
@@ -77,13 +83,59 @@ function advanceWinners(winnerClass, nextRoundClass) {
     }
 }
 
+
+async function predictSecondRound() {
+    const westTeams = document.querySelectorAll(".west-round2");
+    const westWinners = document.querySelectorAll(".west-round2-winner");
+
+    const eastTeams = document.querySelectorAll(".east-round2");
+    const eastWinners = document.querySelectorAll(".east-round2-winner");
+
+    await predictAutomaticRound(westTeams, westWinners);
+    await predictAutomaticRound(eastTeams, eastWinners);
+}
+
+
+async function predictAutomaticRound(teams, winners) {
+    for (let i = 0; i < teams.length; i += 2) {
+
+        const team1 = teams[i].textContent;
+        const team2 = teams[i + 1].textContent;
+
+        if (
+            team1 === "Waiting..." ||
+            team2 === "Waiting..."
+        ) {
+            winners[i / 2].textContent = "Waiting...";
+            continue;
+        }
+
+        const prediction = await getPrediction(team1, team2);
+
+        if (prediction.error) {
+            winners[i / 2].textContent = "Error";
+            continue;
+        }
+
+        winners[i / 2].textContent = prediction.winner;
+    }
+}
+
+
 async function predictPlayoffs() {
+
+    // Predict Round 1
     await predictRound(".west-team", ".west-winner");
     await predictRound(".east-team", ".east-winner");
 
+    // Move Round 1 winners into Round 2
     advanceWinners(".west-winner", ".west-round2");
     advanceWinners(".east-winner", ".east-round2");
+
+    // Predict Round 2
+    await predictSecondRound();
 }
+
 
 document
     .getElementById("predictButton")
