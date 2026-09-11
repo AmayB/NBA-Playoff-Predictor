@@ -104,6 +104,19 @@ function advanceToConferenceFinals(winnerClass, conferenceFinalClass) {
     }
 }
 
+function advanceToNBAFinals() {
+    const westWinner = document.querySelector(
+        ".west-conf-final-winner"
+    ).textContent;
+
+    const eastWinner = document.querySelector(
+        ".east-conf-final-winner"
+    ).textContent;
+
+    document.getElementById("west-finals-team").textContent = westWinner;
+    document.getElementById("east-finals-team").textContent = eastWinner;
+}
+
 async function predictAutomaticRound(teams, winners) {
     for (let i = 0; i < teams.length; i += 2) {
 
@@ -132,18 +145,18 @@ async function predictAutomaticRound(teams, winners) {
 
 async function predictPlayoffs() {
 
-    // Predict Round 1
+    // Round 1
     await predictRound(".west-team", ".west-winner");
     await predictRound(".east-team", ".east-winner");
 
-    // Move Round 1 winners into Round 2
+    // Round 1 → Round 2
     advanceWinners(".west-winner", ".west-round2");
     advanceWinners(".east-winner", ".east-round2");
 
-    // Predict Round 2
+    // Round 2
     await predictSecondRound();
 
-    // Move Round 2 winners into Conference Finals
+    // Round 2 → Conference Finals
     advanceToConferenceFinals(
         ".west-round2-winner",
         ".west-conf-finals"
@@ -153,6 +166,20 @@ async function predictPlayoffs() {
         ".east-round2-winner",
         ".east-conf-finals"
     );
+
+    // Conference Finals
+    await predictAutomaticRound(
+        document.querySelectorAll(".west-conf-finals"),
+        document.querySelectorAll(".west-conf-final-winner")
+    );
+
+    await predictAutomaticRound(
+        document.querySelectorAll(".east-conf-finals"),
+        document.querySelectorAll(".east-conf-final-winner")
+    );
+
+    // Conference Champions → NBA Finals
+    advanceToNBAFinals();
 }
 
 

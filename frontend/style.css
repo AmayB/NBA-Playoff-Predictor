@@ -5,3 +5,21 @@
     border-radius: 5px;
     font-size: 14px;
 }
+
+.finals {
+    width: 300px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.finals-team {
+    margin-bottom: 8px;
+}
+
+.finals-winner {
+    margin-top: 15px;
+    font-size: 18px;
+}
