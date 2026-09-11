@@ -64,12 +64,26 @@ async function predictRound(dropdownClass, winnerClass) {
     }
 }
 
+function advanceWinners(winnerClass, nextRoundClass) {
+    const winners = document.querySelectorAll(winnerClass);
+    const nextRoundTeams = document.querySelectorAll(nextRoundClass);
+
+    for (let i = 0; i < winners.length; i++) {
+        const winner = winners[i].textContent;
+
+        if (winner !== "Winner") {
+            nextRoundTeams[i].textContent = winner;
+        }
+    }
+}
 
 async function predictPlayoffs() {
     await predictRound(".west-team", ".west-winner");
     await predictRound(".east-team", ".east-winner");
-}
 
+    advanceWinners(".west-winner", ".west-round2");
+    advanceWinners(".east-winner", ".east-round2");
+}
 
 document
     .getElementById("predictButton")
