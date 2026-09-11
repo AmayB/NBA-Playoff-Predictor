@@ -1,5 +1,5 @@
 async function loadTeams() {
-    const response = await fetch("http://127.0.0.1:8000/teams");
+    const response = await fetch("/teams");
     const teams = await response.json();
 
     const team1 = document.getElementById("team1");
@@ -21,5 +21,33 @@ async function loadTeams() {
         team2.appendChild(option2);
     }
 }
+
+
+async function predictWinner() {
+    const team1 = document.getElementById("team1").value;
+    const team2 = document.getElementById("team2").value;
+
+    const response = await fetch(
+        `/predict?team1=${encodeURIComponent(team1)}&team2=${encodeURIComponent(team2)}`
+    );
+
+    const prediction = await response.json();
+
+    const result = document.getElementById("result");
+
+    if (prediction.error) {
+        result.textContent = prediction.error;
+        return;
+    }
+
+    result.textContent =
+        `${prediction.winner} wins!`;
+}
+
+
+document
+    .getElementById("predictButton")
+    .addEventListener("click", predictWinner);
+
 
 loadTeams();

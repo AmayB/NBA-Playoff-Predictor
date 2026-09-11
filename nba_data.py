@@ -15,6 +15,10 @@ def get_team_stats(team_name):
     team_row = data[data["TEAM_NAME"] == team_name]
 
     if team_row.empty:
+        if team_name == "Los Angeles Clippers":
+            team_row = data[data["TEAM_NAME"] == "LA Clippers"]
+
+    if team_row.empty:
         return None
 
     return team_row.iloc[0]
