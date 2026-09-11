@@ -95,6 +95,14 @@ async function predictSecondRound() {
     await predictAutomaticRound(eastTeams, eastWinners);
 }
 
+function advanceToConferenceFinals(winnerClass, conferenceFinalClass) {
+    const winners = document.querySelectorAll(winnerClass);
+    const finalTeams = document.querySelectorAll(conferenceFinalClass);
+
+    for (let i = 0; i < winners.length; i++) {
+        finalTeams[i].textContent = winners[i].textContent;
+    }
+}
 
 async function predictAutomaticRound(teams, winners) {
     for (let i = 0; i < teams.length; i += 2) {
@@ -134,6 +142,17 @@ async function predictPlayoffs() {
 
     // Predict Round 2
     await predictSecondRound();
+
+    // Move Round 2 winners into Conference Finals
+    advanceToConferenceFinals(
+        ".west-round2-winner",
+        ".west-conf-finals"
+    );
+
+    advanceToConferenceFinals(
+        ".east-round2-winner",
+        ".east-conf-finals"
+    );
 }
 
 
