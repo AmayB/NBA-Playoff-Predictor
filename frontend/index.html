@@ -9,19 +9,74 @@
 
     <h1>NBA Playoff Predictor</h1>
 
-    <div class="matchup">
-        <select id="team1">
-            <option>Loading teams...</option>
-        </select>
+    <button id="predictButton">Predict Playoffs</button>
 
-        <span>VS</span>
+    <div class="bracket">
 
-        <select id="team2">
-            <option>Loading teams...</option>
-        </select>
+        <div class="conference">
+
+            <h2>Western Conference</h2>
+
+            <div class="round">
+                <h3>First Round</h3>
+
+                <div class="matchup">
+                    <select class="team west-team"></select>
+                    <select class="team west-team"></select>
+                </div>
+
+                <div class="matchup">
+                    <select class="team west-team"></select>
+                    <select class="team west-team"></select>
+                </div>
+
+                <div class="matchup">
+                    <select class="team west-team"></select>
+                    <select class="team west-team"></select>
+                </div>
+
+                <div class="matchup">
+                    <select class="team west-team"></select>
+                    <select class="team west-team"></select>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="conference">
+
+            <h2>Eastern Conference</h2>
+
+            <div class="round">
+                <h3>First Round</h3>
+
+                <div class="matchup">
+                    <select class="team east-team"></select>
+                    <select class="team east-team"></select>
+                </div>
+
+                <div class="matchup">
+                    <select class="team east-team"></select>
+                    <select class="team east-team"></select>
+                </div>
+
+                <div class="matchup">
+                    <select class="team east-team"></select>
+                    <select class="team east-team"></select>
+                </div>
+
+                <div class="matchup">
+                    <select class="team east-team"></select>
+                    <select class="team east-team"></select>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-
-    <button id="predictButton">Predict Winner</button>
 
     <h2 id="result"></h2>
 

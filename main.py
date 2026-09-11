@@ -1,28 +1,67 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from nba_api.stats.static import teams
 from fastapi.staticfiles import StaticFiles
+from nba_api.stats.static import teams
 
 from nba_data import predict_winner
 
+
 app = FastAPI()
+
 app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+
+
+WEST_TEAMS = {
+    "Dallas Mavericks",
+    "Denver Nuggets",
+    "Golden State Warriors",
+    "Houston Rockets",
+    "LA Clippers",
+    "Los Angeles Lakers",
+    "Memphis Grizzlies",
+    "Minnesota Timberwolves",
+    "New Orleans Pelicans",
+    "Oklahoma City Thunder",
+    "Phoenix Suns",
+    "Portland Trail Blazers",
+    "Sacramento Kings",
+    "San Antonio Spurs",
+    "Utah Jazz",
+}
+
+
+EAST_TEAMS = {
+    "Atlanta Hawks",
+    "Boston Celtics",
+    "Brooklyn Nets",
+    "Charlotte Hornets",
+    "Chicago Bulls",
+    "Cleveland Cavaliers",
+    "Detroit Pistons",
+    "Indiana Pacers",
+    "Miami Heat",
+    "Milwaukee Bucks",
+    "New York Knicks",
+    "Orlando Magic",
+    "Philadelphia 76ers",
+    "Toronto Raptors",
+    "Washington Wizards",
+}
+
 
 @app.get("/")
 def home():
     return FileResponse("frontend/index.html")
 
 
-@app.get("/teams")
-def get_teams():
-    nba_teams = teams.get_teams()
+@app.get("/teams/west")
+def get_west_teams():
+    return sorted(WEST_TEAMS)
 
-    team_names = []
 
-    for team in nba_teams:
-        team_names.append(team["full_name"])
-
-    return team_names
+@app.get("/teams/east")
+def get_east_teams():
+    return sorted(EAST_TEAMS)
 
 
 @app.get("/predict")
