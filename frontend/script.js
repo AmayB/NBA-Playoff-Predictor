@@ -10,6 +10,12 @@ async function loadTeams() {
 
     fillDropdowns(westDropdowns, westTeams);
     fillDropdowns(eastDropdowns, eastTeams);
+
+    document.querySelectorAll(".team").forEach(dropdown => {
+        dropdown.addEventListener("change", checkDuplicateTeams);
+    });
+
+    
 }
 
 
@@ -34,6 +40,31 @@ function fillDropdowns(dropdowns, teams) {
     }
 }
 
+function checkDuplicateTeams() {
+    const dropdowns = document.querySelectorAll(".team");
+
+    const selectedTeams = [];
+
+    for (const dropdown of dropdowns) {
+        if (dropdown.value !== "") {
+            selectedTeams.push(dropdown.value);
+        }
+    }
+
+    for (const dropdown of dropdowns) {
+        if (
+            dropdown.value !== "" &&
+            selectedTeams.filter(team => team === dropdown.value).length > 1
+        ) {
+            alert(`${dropdown.value} has been selected more than once.`);
+            dropdown.value = "";
+        }
+    }
+}
+
+document.querySelectorAll(".team").forEach(dropdown => {
+    dropdown.addEventListener("change", checkDuplicateTeams);
+});
 
 async function getPrediction(team1, team2) {
     const response = await fetch(

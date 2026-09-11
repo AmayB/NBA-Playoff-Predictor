@@ -67,30 +67,17 @@ def predict_winner(team1, team2):
 
     if score1 > score2:
         winner = team1
-    else:
+    elif score2 > score1:
         winner = team2
+    else:
+        # If the scores are tied, use win percentage
+        if stats1["W_PCT"] >= stats2["W_PCT"]:
+            winner = team1
+        else:
+            winner = team2
 
     return {
         "winner": winner,
         "team1_score": score1,
         "team2_score": score2
     }
-
-
-# Test the predictor
-prediction = predict_winner(
-    "Boston Celtics",
-    "Golden State Warriors"
-)
-
-print("Predicted Winner:", prediction["winner"])
-print(
-    "Celtics Probability:",
-    round(prediction["team1_probability"] * 100, 1),
-    "%"
-)
-print(
-    "Warriors Probability:",
-    round(prediction["team2_probability"] * 100, 1),
-    "%"
-)
