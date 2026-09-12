@@ -12,10 +12,10 @@ async function loadTeams() {
     fillDropdowns(eastDropdowns, eastTeams);
 
     document.querySelectorAll(".team").forEach(dropdown => {
-        dropdown.addEventListener("change", checkDuplicateTeams);
+        dropdown.addEventListener("change", function () {
+            checkDuplicateTeams(this);
+        });
     });
-
-    
 }
 
 
