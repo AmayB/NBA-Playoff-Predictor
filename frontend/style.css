@@ -1,17 +1,96 @@
-.auto-team {
-    padding: 10px;
-    margin-bottom: 6px;
-    background: #f0f0f0;
-    border-radius: 5px;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 30px;
+    background: #f5f5f5;
+    color: #222;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h3 {
+    text-align: center;
     font-size: 14px;
+    margin-bottom: 15px;
+}
+
+button {
+    display: block;
+    margin: 0 auto 30px auto;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    background: #222;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.bracket {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.conference {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.round {
+    margin-bottom: 30px;
+}
+
+.matchup {
+    margin-bottom: 25px;
+}
+
+select,
+.auto-team,
+.winner {
+    width: 180px;
+    box-sizing: border-box;
+    padding: 9px;
+    margin: 3px auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+    font-size: 13px;
+}
+
+.winner {
+    background: #eee;
+    font-weight: bold;
+    text-align: center;
+}
+
+.auto-team {
+    background: #f3f3f3;
 }
 
 .finals {
-    width: 300px;
+    width: 260px;
     margin: 40px auto;
     padding: 20px;
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
 }
 
@@ -21,5 +100,7 @@
 
 .finals-winner {
     margin-top: 15px;
-    font-size: 18px;
+    background: #222;
+    color: white;
+    font-size: 16px;
 }
