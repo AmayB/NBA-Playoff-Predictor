@@ -6,7 +6,7 @@ NBA playoff predictor that lets you choose the Round 1 matchups and predicts the
 1. Choose the teams for each Round 1 matchup.
 2. Click **Predict Playoffs**.
 3. The program predicts the winners for each round.
-4. At the end, it predicts the NBA Champion. 🏆
+4. At the end, it predicts the NBA Champion. 
 
 ## Built With
 
