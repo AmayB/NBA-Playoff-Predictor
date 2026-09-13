@@ -1,14 +1,18 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from nba_api.stats.static import teams
 
 from nba_data import predict_winner
 
 
 app = FastAPI()
 
-app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+
+app.mount(
+    "/static",
+    StaticFiles(directory="frontend"),
+    name="static"
+)
 
 
 WEST_TEAMS = {
@@ -53,7 +57,6 @@ EAST_TEAMS = {
 def home():
     return FileResponse("frontend/index.html")
 
-
 @app.get("/teams/west")
 def get_west_teams():
     return sorted(WEST_TEAMS)
@@ -63,12 +66,14 @@ def get_west_teams():
 def get_east_teams():
     return sorted(EAST_TEAMS)
 
-
 @app.get("/predict")
 def predict(team1: str, team2: str):
+
     prediction = predict_winner(team1, team2)
 
     if prediction is None:
-        return {"error": "One or both teams were not found."}
+        return {
+            "error": "One or both teams were not found."
+        }
 
     return prediction

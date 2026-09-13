@@ -1,106 +1,356 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 30px;
-    background: #f5f5f5;
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f5f7;
     color: #222;
 }
 
-h1 {
+header {
     text-align: center;
-    margin-bottom: 20px;
+
+    padding: 35px 20px 25px;
+
+    background: white;
+
+    border-bottom: 1px solid #ddd;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 25px;
+header h1 {
+    margin: 0 0 10px;
+
+    font-size: 38px;
 }
 
-h3 {
-    text-align: center;
-    font-size: 14px;
-    margin-bottom: 15px;
+header p {
+    margin: 0 0 20px;
+
+    color: #666;
 }
 
-button {
-    display: block;
-    margin: 0 auto 30px auto;
+#predictButton {
     padding: 12px 25px;
+
     border: none;
-    border-radius: 6px;
-    background: #222;
+    border-radius: 7px;
+
+    background: #111;
     color: white;
+
     font-size: 16px;
+
     cursor: pointer;
 }
 
-button:hover {
-    opacity: 0.85;
+#predictButton:hover {
+    background: #333;
 }
+
+
+
+main {
+    padding: 30px;
+}
+
+
+.conference {
+    background: white;
+
+    margin-bottom: 30px;
+    padding: 25px;
+
+    border-radius: 12px;
+
+    border: 1px solid #ddd;
+
+    overflow-x: auto;
+}
+
+.conference h2 {
+    margin-top: 0;
+
+    text-align: center;
+
+    font-size: 25px;
+}
+
+
 
 .bracket {
     display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    max-width: 1500px;
-    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+
+    min-width: 1050px;
+
+    padding: 20px 10px;
 }
 
-.conference {
-    flex: 1;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-}
 
 .round {
-    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+
+    min-width: 190px;
+
+    position: relative;
 }
 
+.first-round {
+    gap: 25px;
+}
+
+.second-round {
+    gap: 115px;
+}
+
+.conference-finals-round {
+    gap: 0;
+}
+
+.round h3 {
+    text-align: center;
+
+    margin: 0 0 20px;
+
+    font-size: 15px;
+
+    color: #555;
+}
+
+
+
 .matchup {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin-bottom: 35px;
+}
+
+.matchup:last-child {
+    margin-bottom: 0;
+}
+
+
+
+select {
+    width: 190px;
+
+    padding: 10px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    background: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+select:focus {
+    outline: 2px solid #999;
+}
+
+
+
+.team-box {
+    width: 190px;
+
+    min-height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 10px;
+
+    background: #f1f2f4;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+
+.winner {
+    width: 190px;
+
+    min-height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 5px;
+
+    padding: 10px;
+
+    background: #e7e7e7;
+
+    border: 1px solid #bbb;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+
+.nba-finals {
+    max-width: 600px;
+
+    margin: 40px auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+.nba-finals h2 {
+    margin-top: 0;
+
     margin-bottom: 25px;
 }
 
-select,
-.auto-team,
-.winner {
-    width: 180px;
-    box-sizing: border-box;
-    padding: 9px;
-    margin: 3px auto;
-    display: block;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: white;
-    font-size: 13px;
+.finals-matchup {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
 }
 
-.winner {
-    background: #eee;
+.vs {
     font-weight: bold;
-    text-align: center;
+
+    color: #777;
 }
 
-.auto-team {
-    background: #f3f3f3;
-}
+.champion {
+    width: 240px;
 
-.finals {
-    width: 260px;
-    margin: 40px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.finals-team {
-    margin-bottom: 8px;
-}
-
-.finals-winner {
     margin-top: 15px;
-    background: #222;
+
+    padding: 15px;
+
+    background: #111;
+
     color: white;
-    font-size: 16px;
+
+    border-radius: 8px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+
+@media (max-width: 900px) {
+
+    main {
+        padding: 15px;
+    }
+
+    .conference {
+        overflow-x: auto;
+    }
+
+    .bracket {
+        justify-content: flex-start;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+}
+
+.first-round .matchup {
+    position: relative;
+}
+
+.first-round .matchup::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    right: -45px;
+
+    width: 45px;
+    height: 1px;
+
+    background: #aaa;
+}
+
+
+/* Lines from Round 1 into Round 2 */
+
+.second-round .matchup {
+    position: relative;
+}
+
+.second-round .matchup::before {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: -45px;
+
+    width: 45px;
+    height: 1px;
+
+    background: #aaa;
+}
+
+
+/* Lines from Round 2 into Conference Finals */
+
+.conference-finals-round .matchup {
+    position: relative;
+}
+
+.conference-finals-round .matchup::before {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: -45px;
+
+    width: 45px;
+    height: 1px;
+
+    background: #aaa;
 }
