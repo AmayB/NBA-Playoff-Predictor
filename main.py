@@ -7,11 +7,10 @@ from nba_data import predict_winner
 
 app = FastAPI()
 
-
 app.mount(
-    "/static",
+    "/frontend",
     StaticFiles(directory="frontend"),
-    name="static"
+    name="frontend"
 )
 
 
@@ -57,6 +56,7 @@ EAST_TEAMS = {
 def home():
     return FileResponse("frontend/index.html")
 
+
 @app.get("/teams/west")
 def get_west_teams():
     return sorted(WEST_TEAMS)
@@ -66,9 +66,9 @@ def get_west_teams():
 def get_east_teams():
     return sorted(EAST_TEAMS)
 
+
 @app.get("/predict")
 def predict(team1: str, team2: str):
-
     prediction = predict_winner(team1, team2)
 
     if prediction is None:

@@ -1,364 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>NBA Playoff Predictor</title>
-
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/frontend/style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>NBA Playoff Predictor</h1>
+<header>
+    <h1>NBA Playoff Predictor</h1>
+    <button id="predictButton">Predict Playoffs</button>
+</header>
 
-        <p>
-            
-        </p>
+<main>
 
-        <button id="predictButton">
-            Predict Playoffs
-        </button>
-    </header>
+    <div class="playoff-bracket">
 
-
-    <main>
-
-        <!-- WESTERN CONFERENCE -->
-
-        <section class="conference">
+        <section class="conference western-conference">
 
             <h2>Western Conference</h2>
 
-            <div class="bracket">
-
-
-                <!-- WEST ROUND 1 -->
+            <div class="bracket west-bracket">
 
                 <div class="round first-round">
-
                     <h3>First Round</h3>
 
-
-                    <!-- Matchup 1 -->
-
                     <div class="matchup">
-
-                        <select class="team west-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <select class="team west-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <div class="winner west-winner">
-                            Winner
-                        </div>
-
+                        <select class="team west-team"></select>
+                        <select class="team west-team"></select>
+                        <div class="winner west-winner">Waiting...</div>
                     </div>
 
-
-                    <!-- Matchup 2 -->
-
                     <div class="matchup">
-
-                        <select class="team west-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <select class="team west-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <div class="winner west-winner">
-                            Winner
-                        </div>
-
+                        <select class="team west-team"></select>
+                        <select class="team west-team"></select>
+                        <div class="winner west-winner">Waiting...</div>
                     </div>
 
-
-                    <!-- Matchup 3 -->
-
                     <div class="matchup">
-
-                        <select class="team west-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <select class="team west-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <div class="winner west-winner">
-                            Winner
-                        </div>
-
+                        <select class="team west-team"></select>
+                        <select class="team west-team"></select>
+                        <div class="winner west-winner">Waiting...</div>
                     </div>
 
-
-                    <!-- Matchup 4 -->
-
                     <div class="matchup">
-
-                        <select class="team west-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <select class="team west-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <div class="winner west-winner">
-                            Winner
-                        </div>
-
+                        <select class="team west-team"></select>
+                        <select class="team west-team"></select>
+                        <div class="winner west-winner">Waiting...</div>
                     </div>
-
                 </div>
-
-
-                <!-- WEST ROUND 2 -->
 
                 <div class="round second-round">
-
-                    <h3>Second Round</h3>
-
+                    <h3>Conference Semifinals</h3>
 
                     <div class="matchup">
-
-                        <div class="team-box west-round2">
-                            Waiting...
-                        </div>
-
-                        <div class="team-box west-round2">
-                            Waiting...
-                        </div>
-
-                        <div class="winner west-round2-winner">
-                            Winner
-                        </div>
-
+                        <div class="team-box west-round2">Waiting...</div>
+                        <div class="team-box west-round2">Waiting...</div>
+                        <div class="winner west-round2-winner">Waiting...</div>
                     </div>
-
 
                     <div class="matchup">
-
-                        <div class="team-box west-round2">
-                            Waiting...
-                        </div>
-
-                        <div class="team-box west-round2">
-                            Waiting...
-                        </div>
-
-                        <div class="winner west-round2-winner">
-                            Winner
-                        </div>
-
+                        <div class="team-box west-round2">Waiting...</div>
+                        <div class="team-box west-round2">Waiting...</div>
+                        <div class="winner west-round2-winner">Waiting...</div>
                     </div>
-
                 </div>
 
-
-                <!-- WEST CONFERENCE FINALS -->
-
                 <div class="round conference-finals-round">
-
-                    <h3>Conference Finals</h3>
-
+                    <h3>Western Conference Finals</h3>
 
                     <div class="matchup">
-
-                        <div class="team-box west-conf-finals">
-                            Waiting...
-                        </div>
-
-                        <div class="team-box west-conf-finals">
-                            Waiting...
-                        </div>
-
-                        <div class="winner west-conf-final-winner">
-                            Winner
-                        </div>
-
+                        <div class="team-box west-conf-finals">Waiting...</div>
+                        <div class="team-box west-conf-finals">Waiting...</div>
+                        <div class="winner west-conf-final-winner">Waiting...</div>
                     </div>
-
                 </div>
 
             </div>
 
         </section>
 
-
-        <!-- EASTERN CONFERENCE -->
-
-        <section class="conference">
-
-            <h2>Eastern Conference</h2>
-
-            <div class="bracket">
-
-
-                <!-- EAST ROUND 1 -->
-
-                <div class="round first-round">
-
-                    <h3>First Round</h3>
-
-
-                    <!-- Matchup 1 -->
-
-                    <div class="matchup">
-
-                        <select class="team east-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <select class="team east-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <div class="winner east-winner">
-                            Winner
-                        </div>
-
-                    </div>
-
-
-                    <!-- Matchup 2 -->
-
-                    <div class="matchup">
-
-                        <select class="team east-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <select class="team east-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <div class="winner east-winner">
-                            Winner
-                        </div>
-
-                    </div>
-
-
-                    <!-- Matchup 3 -->
-
-                    <div class="matchup">
-
-                        <select class="team east-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <select class="team east-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <div class="winner east-winner">
-                            Winner
-                        </div>
-
-                    </div>
-
-
-                    <!-- Matchup 4 -->
-
-                    <div class="matchup">
-
-                        <select class="team east-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <select class="team east-team">
-                            <option value="">Choose team</option>
-                        </select>
-
-                        <div class="winner east-winner">
-                            Winner
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- EAST ROUND 2 -->
-
-                <div class="round second-round">
-
-                    <h3>Second Round</h3>
-
-
-                    <div class="matchup">
-
-                        <div class="team-box east-round2">
-                            Waiting...
-                        </div>
-
-                        <div class="team-box east-round2">
-                            Waiting...
-                        </div>
-
-                        <div class="winner east-round2-winner">
-                            Winner
-                        </div>
-
-                    </div>
-
-
-                    <div class="matchup">
-
-                        <div class="team-box east-round2">
-                            Waiting...
-                        </div>
-
-                        <div class="team-box east-round2">
-                            Waiting...
-                        </div>
-
-                        <div class="winner east-round2-winner">
-                            Winner
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- EAST CONFERENCE FINALS -->
-
-                <div class="round conference-finals-round">
-
-                    <h3>Conference Finals</h3>
-
-
-                    <div class="matchup">
-
-                        <div class="team-box east-conf-finals">
-                            Waiting...
-                        </div>
-
-                        <div class="team-box east-conf-finals">
-                            Waiting...
-                        </div>
-
-                        <div class="winner east-conf-final-winner">
-                            Winner
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
 
         <section class="nba-finals">
 
@@ -366,31 +89,96 @@
 
             <div class="finals-matchup">
 
-                <div class="team-box" id="west-finals-team">
-                    Western Conference Champion
+                <div class="team-box finals-team" id="west-finals-team">
+                    Western Champion
                 </div>
 
                 <div class="vs">
                     VS
                 </div>
 
-                <div class="team-box" id="east-finals-team">
-                    Eastern Conference Champion
+                <div class="team-box finals-team" id="east-finals-team">
+                    Eastern Champion
                 </div>
 
                 <div class="champion" id="nba-champion">
-                    NBA Champion
+                    Champion
                 </div>
 
             </div>
 
         </section>
 
-    </main>
 
+        <section class="conference eastern-conference">
 
-    <script src="/static/script.js"></script>
+            <h2>Eastern Conference</h2>
+
+            <div class="bracket east-bracket">
+
+                <div class="round first-round">
+                    <h3>First Round</h3>
+
+                    <div class="matchup">
+                        <select class="team east-team"></select>
+                        <select class="team east-team"></select>
+                        <div class="winner east-winner">Waiting...</div>
+                    </div>
+
+                    <div class="matchup">
+                        <select class="team east-team"></select>
+                        <select class="team east-team"></select>
+                        <div class="winner east-winner">Waiting...</div>
+                    </div>
+
+                    <div class="matchup">
+                        <select class="team east-team"></select>
+                        <select class="team east-team"></select>
+                        <div class="winner east-winner">Waiting...</div>
+                    </div>
+
+                    <div class="matchup">
+                        <select class="team east-team"></select>
+                        <select class="team east-team"></select>
+                        <div class="winner east-winner">Waiting...</div>
+                    </div>
+                </div>
+
+                <div class="round second-round">
+                    <h3>Conference Semifinals</h3>
+
+                    <div class="matchup">
+                        <div class="team-box east-round2">Waiting...</div>
+                        <div class="team-box east-round2">Waiting...</div>
+                        <div class="winner east-round2-winner">Waiting...</div>
+                    </div>
+
+                    <div class="matchup">
+                        <div class="team-box east-round2">Waiting...</div>
+                        <div class="team-box east-round2">Waiting...</div>
+                        <div class="winner east-round2-winner">Waiting...</div>
+                    </div>
+                </div>
+
+                <div class="round conference-finals-round">
+                    <h3>Eastern Conference Finals</h3>
+
+                    <div class="matchup">
+                        <div class="team-box east-conf-finals">Waiting...</div>
+                        <div class="team-box east-conf-finals">Waiting...</div>
+                        <div class="winner east-conf-final-winner">Waiting...</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<script src="/frontend/script.js"></script>
 
 </body>
-
 </html>
