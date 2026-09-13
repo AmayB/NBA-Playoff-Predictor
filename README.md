@@ -39,16 +39,6 @@ Then open this in your browser:
 
     http://127.0.0.1:8000
 
-## Project Structure
-
-    nba-playoff-predictor/
-    ├── main.py
-    ├── nba_data.py
-    └── frontend/
-        ├── index.html
-        ├── style.css
-        └── script.js
-
 ## Created By
 
 Amay Bhardwaj
