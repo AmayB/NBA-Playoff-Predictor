@@ -274,7 +274,7 @@ select:focus {
 }
 
 .east-bracket .round {
-    direction: ltr;
+    direction: rtl;
 }
 
 .nba-finals {
