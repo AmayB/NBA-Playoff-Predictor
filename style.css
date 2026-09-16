@@ -2,12 +2,9 @@
     box-sizing: border-box;
 }
 
-html {
-    min-width: 1500px;
-}
-
 body {
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
     background: #f4f5f7;
     color: #222;
@@ -44,292 +41,199 @@ header p {
     background: #333;
 }
 
-#predictButton:disabled {
-    opacity: 0.6;
-    cursor: default;
-}
-
 main {
-    width: 100%;
-    padding: 45px 30px 100px;
+    padding: 30px;
 }
 
 .playoff-bracket {
     display: grid;
     grid-template-columns: 1fr 280px 1fr;
-    align-items: start;
-    gap: 25px;
+    align-items: center;
+    gap: 35px;
     width: 100%;
-    max-width: 1900px;
-    margin: 0 auto;
 }
 
 .conference {
-    min-width: 0;
+    background: transparent;
+    padding: 0;
+    margin: 0;
 }
 
 .conference h2 {
     margin: 0 0 35px;
     text-align: center;
-    font-size: 27px;
+    font-size: 28px;
 }
 
 .bracket {
-    display: grid;
-    grid-template-columns: 190px 190px 190px;
-    gap: 35px;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 55px;
+    min-width: 0;
 }
 
 .west-bracket {
-    justify-content: end;
+    flex-direction: row;
 }
 
 .east-bracket {
-    justify-content: start;
+    flex-direction: row-reverse;
 }
 
 .round {
-    position: relative;
-    width: 190px;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    min-width: 195px;
+    position: relative;
 }
 
 .round h3 {
-    position: absolute;
-    top: -45px;
-    right: 0;
-    left: 0;
-    height: auto;
-    margin: 0;
     text-align: center;
+    margin: 0 0 20px;
     font-size: 15px;
     color: #555;
-    white-space: nowrap;
-}
-
-.first-round {
-    gap: 28px;
-}
-
-.second-round {
-    gap: 105px;
-}
-
-.conference-finals-round {
-    justify-content: center;
 }
 
 .matchup {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    width: 190px;
+    margin-bottom: 55px;
 }
 
-.team-select {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    width: 220px;
-}
-
-.team-logo {
-    width: 24px;
-    height: 24px;
-    flex: 0 0 24px;
-    object-fit: contain;
-}
-
-.team-trigger {
-    width: 190px;
-    height: 42px;
-    padding: 0 12px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-    background: white;
-    color: #222;
-    font: 14px Arial, sans-serif;
-    text-align: left;
-    cursor: pointer;
-}
-
-.team-trigger:hover,
-.custom-select.open .team-trigger {
-    border-color: #999;
-}
-
-.team-options {
-    position: absolute;
-    top: 48px;
-    left: 31px;
-    z-index: 10;
-    display: none;
-    width: 190px;
-    max-height: 260px;
-    overflow-y: auto;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-    background: white;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
-}
-
-.custom-select.open .team-options {
-    display: flex;
-    flex-direction: column;
-}
-
-.team-option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 36px;
-    padding: 5px 7px;
-    border: 0;
-    border-radius: 4px;
-    background: transparent;
-    color: #222;
-    font: 14px Arial, sans-serif;
-    text-align: left;
-    cursor: pointer;
-}
-
-.team-option:hover,
-.team-option:focus {
-    outline: none;
-    background: #f0f1f3;
-}
-
-.team-option[hidden] {
-    display: none;
-}
-
-.team-option-logo {
-    width: 24px;
-    height: 24px;
-    flex: 0 0 24px;
-    object-fit: contain;
-}
-
-.team-native {
-    display: none;
+.matchup:last-child {
+    margin-bottom: 0;
 }
 
 select {
-    width: 190px;
-    height: 42px;
-    padding: 0 12px;
+    width: 195px;
+    height: 43px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 7px;
     background: white;
-    color: #222;
     font-size: 14px;
     cursor: pointer;
 }
 
-select:hover {
-    border-color: #999;
-}
-
 select:focus {
-    outline: 2px solid #aaa;
-    outline-offset: 1px;
+    outline: 2px solid #999;
 }
 
 .team-box {
-    width: 190px;
-    min-height: 42px;
+    width: 195px;
+    min-height: 43px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 9px 12px;
+    padding: 10px;
+    background: #e7e7e7;
     border: 1px solid #ccc;
     border-radius: 7px;
-    background: #e9eaec;
     font-size: 14px;
-    font-weight: 600;
     text-align: center;
+    font-weight: 600;
 }
 
 .winner {
-    width: 190px;
-    min-height: 42px;
+    width: 195px;
+    min-height: 43px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 9px 12px;
-    border: 1px solid #cfcfcf;
+    margin-top: 3px;
+    padding: 10px;
+    background: #f7f7f7;
+    border: 1px solid #ccc;
     border-radius: 7px;
-    background: #f6f4f0;
-    font-size: 13px;
+    font-weight: bold;
     text-align: center;
 }
 
+.first-round .matchup {
+    margin-bottom: 55px;
+}
+
+.second-round .matchup {
+    margin-bottom: 145px;
+}
+
+.conference-finals-round .matchup {
+    margin-bottom: 0;
+}
+
 .nba-finals {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 500px;
-    padding-top: 50px;
+    width: 280px;
+    padding: 25px 18px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
 .nba-finals h2 {
     margin: 0 0 25px;
-    text-align: center;
-    font-size: 26px;
+    font-size: 27px;
 }
 
 .finals-matchup {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding: 25px 18px;
-    border: 1px solid #d7d7d7;
-    border-radius: 12px;
-    background: white;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    gap: 10px;
 }
 
 .finals-team {
-    width: 220px;
+    width: 225px;
 }
 
 .vs {
     font-weight: bold;
-    font-size: 18px;
+    color: #777;
+    margin: 2px 0;
 }
 
 .champion {
-    margin-top: 12px;
-    width: 220px;
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 12px;
-    border-radius: 10px;
+    width: 225px;
+    margin-top: 15px;
+    padding: 15px;
     background: #111;
     color: white;
-    text-align: center;
-    font-weight: 700;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-@media (max-width: 1200px) {
-    html {
-        min-width: 0;
+@media (max-width: 1400px) {
+    .playoff-bracket {
+        grid-template-columns: 1fr 260px 1fr;
+        gap: 20px;
+    }
+
+    .bracket {
+        gap: 25px;
+    }
+
+    .round {
+        min-width: 175px;
+    }
+
+    select,
+    .team-box,
+    .winner {
+        width: 175px;
+    }
+}
+
+@media (max-width: 1100px) {
+    main {
+        overflow-x: auto;
     }
 
     .playoff-bracket {
-        grid-template-columns: 1fr;
-    }
-
-    .nba-finals {
-        min-height: auto;
-        padding-top: 0;
+        min-width: 1200px;
     }
 }
