@@ -35,10 +35,6 @@ Start the backend:
 
     uvicorn main:app --reload
 
-Then open this in your browser:
-
-    http://127.0.0.1:8000
-
 ## Created By
 
 Amay Bhardwaj
