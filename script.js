@@ -1358,7 +1358,6 @@ async function predictFinals(
             );
 
         text.textContent =
-            "🏆 " +
             champion;
 
 
