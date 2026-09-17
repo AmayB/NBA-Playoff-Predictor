@@ -1,11 +1,24 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
 
 from nba_data import predict_winner
 
 
 app = FastAPI()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://amayb.github.io",
+        "http://127.0.0.1:8000",
+        "http://localhost:8000",
+    ],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 WEST_TEAMS = {
@@ -48,17 +61,7 @@ EAST_TEAMS = {
 
 @app.get("/")
 def home():
-    return FileResponse("index.html")
-
-
-@app.get("/style.css")
-def get_css():
-    return FileResponse("style.css", media_type="text/css")
-
-
-@app.get("/script.js")
-def get_javascript():
-    return FileResponse("script.js", media_type="application/javascript")
+    return {"status": "NBA Playoff Predictor API is running"}
 
 
 @app.get("/teams/west")
@@ -73,6 +76,7 @@ def get_east_teams():
 
 @app.post("/predict")
 def predict(team1: str, team2: str):
+
     prediction = predict_winner(team1, team2)
 
     if prediction is None:
