@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://nba-playoff-predictor-api.onrender.com";
+
 const teamLogos = {
 
     "Atlanta Hawks": "https://cdn.nba.com/logos/nba/1610612737/global/L/logo.svg",
@@ -41,8 +43,8 @@ async function loadTeams() {
             westResponse,
             eastResponse
         ] = await Promise.all([
-            fetch("/teams/west"),
-            fetch("/teams/east")
+            fetch(API_BASE_URL + "/teams/west"),
+            fetch(API_BASE_URL + "/teams/east")
         ]);
 
 
@@ -872,19 +874,15 @@ async function predictMatchup(
 
         const response =
             await fetch(
+                API_BASE_URL +
                 "/predict?team1=" +
-                encodeURIComponent(
-                    team1
-                ) +
+                encodeURIComponent(team1) +
                 "&team2=" +
-                encodeURIComponent(
-                    team2
-                ),
+                encodeURIComponent(team2),
                 {
                     method: "POST"
                 }
             );
-
 
         if (!response.ok) {
 
