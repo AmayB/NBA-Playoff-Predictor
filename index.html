@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NBA Playoff Predictor</title>
+
+    <link
+        rel="stylesheet"
+        href="/style.css"
+    >
+</head>
+
+<body>
+
+<header>
+    <a
+        class="portfolio-link"
+        href="https://amaybhardwaj.com"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        amaybhardwaj.com ↗
+    </a>
+
+    <h1>NBA Playoff Predictor</h1>
+
+    <p class="subtitle">
+        An NBA playoff predictor that uses the NBA API to predict the conference and NBA champion.
+    </p>
+
+    <button id="predictButton">Predict Playoffs</button>
+</header>
+
+<main>
+
+    <div class="playoff-layout">
+
+
+
+        <section class="conference western">
+
+            <h2>Western Conference</h2>
+
+            <div class="bracket west-bracket">
+
+                <div class="round round-1">
+
+                    <h3></h3>
+
+                    <div class="matchup">
+
+                        <select class="team west-team"></select>
+                        <select class="team west-team"></select>
+
+                        <div class="winner west-winner">
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="matchup">
+
+                        <select class="team west-team"></select>
+                        <select class="team west-team"></select>
+
+                        <div class="winner west-winner">
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="matchup">
+
+                        <select class="team west-team"></select>
+                        <select class="team west-team"></select>
+
+                        <div class="winner west-winner">
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="matchup">
+
+                        <select class="team west-team"></select>
+                        <select class="team west-team"></select>
+
+                        <div class="winner west-winner">
+                         
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="round round-2">
+
+                    <h3></h3>
+
+                    <div class="matchup">
+
+                        <div class="team-box west-round2">
+                          
+                        </div>
+
+                        <div class="team-box west-round2">
+                          
+                        </div>
+
+                        <div class="winner west-round2-winner">
+                         
+                        </div>
+
+                    </div>
+
+                    <div class="matchup">
+
+                        <div class="team-box west-round2">
+                         
+                        </div>
+
+                        <div class="team-box west-round2">
+                         
+                        </div>
+
+                        <div class="winner west-round2-winner">
+                     
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="round conference-finals-round">
+
+                    <h3></h3>
+
+                    <div class="matchup">
+
+                        <div class="team-box west-conf-finals">
+                          
+                        </div>
+
+                        <div class="team-box west-conf-finals">
+                          
+                        </div>
+
+                        <div class="winner west-conf-final-winner">
+                          
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="nba-finals">
+
+            <h2>NBA Finals</h2>
+
+            <div class="finals-content">
+
+                <div
+                    id="west-finals-team"
+                    class="finals-team"
+                >
+                    Western Champion
+                </div>
+
+                <div class="vs">
+                    VS
+                </div>
+
+                <div
+                    id="east-finals-team"
+                    class="finals-team"
+                >
+                    Eastern Champion
+                </div>
+
+                <div
+                    id="nba-champion"
+                    class="champion"
+                >
+                    Champion
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="conference eastern">
+
+            <h2>Eastern Conference</h2>
+
+            <div class="bracket east-bracket">
+
+                <div class="round conference-finals-round">
+
+                    <h3></h3>
+
+                    <div class="matchup">
+
+                        <div class="team-box east-conf-finals">
+                         
+                        </div>
+
+                        <div class="team-box east-conf-finals">
+                           
+                        </div>
+
+                        <div class="winner east-conf-final-winner">
+                     
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="round round-2">
+
+                    <h3></h3>
+
+                    <div class="matchup">
+
+                        <div class="team-box east-round2">
+                      
+                        </div>
+
+                        <div class="team-box east-round2">
+                          
+                        </div>
+
+                        <div class="winner east-round2-winner">
+                        </div>
+
+                    </div>
+
+                    <div class="matchup">
+
+                        <div class="team-box east-round2">
+                          
+                        </div>
+
+                        <div class="team-box east-round2">
+                          
+                        </div>
+
+                        <div class="winner east-round2-winner">
+                           
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="round round-1">
+
+                    <h3></h3>
+
+                    <div class="matchup">
+
+                        <select class="team east-team"></select>
+                        <select class="team east-team"></select>
+
+                        <div class="winner east-winner">
+                           
+                        </div>
+
+                    </div>
+
+                    <div class="matchup">
+
+                        <select class="team east-team"></select>
+                        <select class="team east-team"></select>
+
+                        <div class="winner east-winner">
+                         
+                        </div>
+
+                    </div>
+
+                    <div class="matchup">
+
+                        <select class="team east-team"></select>
+                        <select class="team east-team"></select>
+
+                        <div class="winner east-winner">
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="matchup">
+
+                        <select class="team east-team"></select>
+                        <select class="team east-team"></select>
+
+                        <div class="winner east-winner">
+                           
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <svg
+        id="bracket-lines"
+        aria-hidden="true"
+    ></svg>
+
+
+
+</main>
+
+<script src="/script.js"></script>
+
+</body>
+
+</html>
