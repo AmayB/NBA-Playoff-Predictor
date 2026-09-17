@@ -1,43 +1,48 @@
-from functools import lru_cache
+import requests
 
-from nba_api.stats.endpoints import leaguedashteamstats
+API_URL = "https://site.api.espn.com/apis/v2/sports/basketball/nba/standings"
 
-
-@lru_cache(maxsize=1)
-def get_data():
-    """Download NBA team statistics only when they are needed."""
-    stats = leaguedashteamstats.LeagueDashTeamStats(
-        season="2025-26",
-        season_type_all_star="Regular Season",
-        timeout=120
+def get_team_stats(team_name):
+    response = requests.get(
+        API_URL,
+        params={
+            "region": "us",
+            "lang": "en",
+            "contentorigin": "espn",
+            "season": "2026"
+        },
+        timeout=15
     )
 
-    return stats.get_data_frames()[0]
+    response.raise_for_status()
 
-
-# Find a team's statistics
-def get_team_stats(team_name):
-    data = get_data()
+    data = response.json()
 
     name_fixes = {
-        "Los Angeles Clippers": "LA Clippers",
-        "Los Angeles Lakers": "Los Angeles Lakers",
-        "New York Knicks": "New York Knicks",
-        "Golden State Warriors": "Golden State Warriors",
-        "Oklahoma City Thunder": "Oklahoma City Thunder",
+        "Los Angeles Clippers": "LA Clippers"
     }
 
-    api_name = name_fixes.get(team_name, team_name)
+    search_name = name_fixes.get(team_name, team_name)
 
-    team_row = data[data["TEAM_NAME"] == api_name]
+    for conference in data.get("children", []):
+        for entry in conference.get("standings", {}).get("entries", []):
+            team = entry.get("team", {})
 
-    if team_row.empty:
-        return None
+            if team.get("displayName") == search_name:
+                stats = {}
 
-    return team_row.iloc[0]
+                for stat in entry.get("stats", []):
+                    stats[stat["name"]] = stat.get("value")
+
+                return {
+                    "W_PCT": float(stats.get("winPercent", 0)),
+                    "W": float(stats.get("wins", 0)),
+                    "L": float(stats.get("losses", 0))
+                }
+
+    return None
 
 
-# Predict which team is stronger
 def predict_winner(team1, team2):
     stats1 = get_team_stats(team1)
     stats2 = get_team_stats(team2)
@@ -54,30 +59,24 @@ def predict_winner(team1, team2):
     else:
         score2 += 3
 
-    # Points per game
-    if stats1["PTS"] > stats2["PTS"]:
+    # Wins
+    if stats1["W"] > stats2["W"]:
         score1 += 2
     else:
         score2 += 2
 
-    # Rebounds
-    if stats1["REB"] > stats2["REB"]:
+    # Losses
+    if stats1["L"] < stats2["L"]:
         score1 += 1
     else:
         score2 += 1
 
-    # Assists
-    if stats1["AST"] > stats2["AST"]:
-        score1 += 1
-    else:
-        score2 += 1
-
+    # Tiebreaker
     if score1 > score2:
         winner = team1
     elif score2 > score1:
         winner = team2
     else:
-        # If the scores are tied, use win percentage
         if stats1["W_PCT"] >= stats2["W_PCT"]:
             winner = team1
         else:
