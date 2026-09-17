@@ -1,17 +1,24 @@
+from functools import lru_cache
+
 from nba_api.stats.endpoints import leaguedashteamstats
 
 
-# Get NBA team statistics
-stats = leaguedashteamstats.LeagueDashTeamStats(
-    season="2025-26",
-    season_type_all_star="Regular Season"
-)
+@lru_cache(maxsize=1)
+def get_data():
+    """Download NBA team statistics only when they are needed."""
+    stats = leaguedashteamstats.LeagueDashTeamStats(
+        season="2025-26",
+        season_type_all_star="Regular Season",
+        timeout=120
+    )
 
-data = stats.get_data_frames()[0]
+    return stats.get_data_frames()[0]
 
 
 # Find a team's statistics
 def get_team_stats(team_name):
+    data = get_data()
+
     name_fixes = {
         "Los Angeles Clippers": "LA Clippers",
         "Los Angeles Lakers": "Los Angeles Lakers",
