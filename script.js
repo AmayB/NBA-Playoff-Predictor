@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://nba-playoff-predictor-api.onrender.com";
+const API_BASE_URL = "https://amay-nba-playoff-api-e4cffhhtfsfkbxdx.northcentralus-01.azurewebsites.net";
 
 const teamLogos = {
 
