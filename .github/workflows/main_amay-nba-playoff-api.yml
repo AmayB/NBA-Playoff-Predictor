@@ -61,6 +61,6 @@ jobs:
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'amay-nba-playoff-api-e4cffhhtfsfkbxdx'
+          app-name: 'amay-nba-playoff-api'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4BC1CC1BB474460F825C352B7B625A68 }}
